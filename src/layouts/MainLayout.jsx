@@ -10,9 +10,9 @@ function MainLayout() {
 
       <main className="main-content">
         <Header />
-        <div className="page-content">
-          <Outlet />
-        </div>
+        <main className="page-content">
+        <Outlet />
+        </main>
       </main>
     </div>
   );

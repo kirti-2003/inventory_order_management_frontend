@@ -33,7 +33,7 @@
   background: #315f6d;
 }
 
-.main-section {
+.main-content {
   flex: 1;
   min-width: 0;
   width: 100%;
@@ -46,6 +46,7 @@
   align-items: center;
   padding: 0 34px;
   border-bottom: 1px solid #dbe7eb;
+  width: 100%;
 }
 
 .header h3 {
@@ -57,6 +58,7 @@
 .page-content {
   padding: 34px;
   width: 100%;
+  max-width: none;
 }
 
 .sidebar-brand {
