@@ -49,14 +49,47 @@ export default function Customers() {
   };
 
   const handleChange = (e) => {
-    setFormData({
+    const { name, value } = e.target;
+
+    if (name === "full_name") {
+      const onlyLetters = value.replace(/[^A-Za-z\s]/g, "");
+
+      if (onlyLetters.length > 30) return;
+
+      setFormData({
         ...formData,
-        [e.target.name]: e.target.value,
+        full_name: onlyLetters,
+      });
+
+      return;
+    }
+
+    if (name === "phone") {
+      const onlyNumbers = value.replace(/\D/g, "");
+
+      if (onlyNumbers.length > 10) return;
+
+      setFormData({
+        ...formData,
+        phone: onlyNumbers,
+      });
+
+      return;
+    }
+
+    setFormData({
+      ...formData,
+      [name]: value,
     });
-    };
+  };
 
     const handleCreateCustomer = async (e) => {
     e.preventDefault();
+
+    if (formData.phone.length !== 10) {
+      alert("Phone number must be exactly 10 digits");
+      return;
+    }
 
     try {
         setSaving(true);
@@ -94,26 +127,27 @@ export default function Customers() {
   }, [customers, search]);
 
   return (
-  <div className="w-full min-h-screen bg-slate-100">
-    <div className="w-full bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+  <div className="w-full min-h-screen bg-slate-100 px-10 py-4">
       {/* Header */}
-      <div className="flex items-center justify-between gap-6 mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-900">
-            Customer Management
-          </h1>
-          <p className="text-slate-500 mt-1">
-            Manage all customers from one place
-          </p>
-        </div>
-
-        <button
-            onClick={() => setShowModal(true)}
-            className="shrink-0 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-semibold"
-            >
-            + Add Customer
-        </button>
+     <div className="flex items-center justify-between gap-6 mb-5">
+      <div>
+        <h1 className="text-3xl font-bold text-slate-900">
+          Customer Management
+        </h1>
+        <p className="text-slate-500 mt-1">
+          Manage all customers from one place
+        </p>
       </div>
+
+      <button
+        onClick={() => setShowModal(true)}
+        className="shrink-0 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-semibold"
+      >
+        + Add Customer
+      </button>
+    </div>
+
+    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
 
       {/* Search & Stats */}
       <div className="flex items-center justify-between gap-6 mb-6">
@@ -132,7 +166,7 @@ export default function Customers() {
       </div>
 
       {/* Table */}
-      <div className="w-full overflow-x-auto border border-slate-200 rounded-xl">
+      <div className="w-full overflow-x-auto border border-slate-200 rounded-xl bg-white">
         <table className="w-full min-w-full border-collapse">
           <thead className="bg-slate-50">
             <tr>
@@ -218,6 +252,7 @@ export default function Customers() {
           </tbody>
         </table>
       </div>
+      </div>
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
             <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl">
@@ -232,6 +267,7 @@ export default function Customers() {
                 onChange={handleChange}
                 placeholder="Full Name"
                 required
+                maxLength={30}
                 className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
                 />
 
@@ -250,6 +286,7 @@ export default function Customers() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Phone"
+                maxLength={10}
                 className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
                 />
 
@@ -283,6 +320,5 @@ export default function Customers() {
         </div>
         )}
     </div>
-  </div>
 );
 }

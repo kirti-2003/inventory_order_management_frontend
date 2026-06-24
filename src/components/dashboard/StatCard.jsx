@@ -1,19 +1,21 @@
 function StatCard({ title, value, icon: Icon, color, bgColor }) {
   return (
     <div
-      className="rounded-xl shadow-sm border border-gray-100 p-4 flex items-center gap-4 "
+      className="dashboard-stat-card flex w-full items-center gap-3 rounded-xl border border-gray-100 shadow-sm transition-shadow duration-200 hover:shadow-md"
       style={{ backgroundColor: bgColor }}
     >
       <div
-        className="w-12 h-12 rounded-full flex items-center justify-center text-white shrink-0"
+        className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-white"
         style={{ backgroundColor: color }}
       >
-        <Icon size={22} />
+        <Icon size={16} />
       </div>
 
-      <div>
-        <p className="text-sm font-semibold text-gray-500">{title}</p>
-        <h2 className="text-3xl font-bold text-gray-900 leading-tight">
+      <div className="min-w-0 flex-1">
+        <p className="mb-0.5 truncate text-xs font-medium text-gray-500">
+          {title}
+        </p>
+        <h2 className="text-xl font-bold leading-tight text-gray-900">
           {value}
         </h2>
       </div>

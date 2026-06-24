@@ -112,27 +112,32 @@ export default function Orders() {
   };
 
   return (
-    <div className="min-h-screen bg-[#cfe7f0] p-8">
-      <div className="w-full rounded-xl bg-white/80 p-8 shadow-sm">
-        <div className="mb-8 flex items-center justify-between">
-          <button
-                onClick={() => setShowAddModal(true)}
-                className="flex items-center gap-2 rounded-lg bg-[#264653] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1f3b46]"
-                >
-                <Plus size={18} />
-                Add Order
-          </button>
-          <div>
-            <h1 className="text-2xl font-bold text-slate-800">
-              Order History
-            </h1>
-            <p className="mt-1 text-sm text-slate-500">
-              View and manage all customer orders
-            </p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-slate-100 px-10 py-4">
 
-        <div className="overflow-hidden rounded-lg border border-slate-200">
+  {/* Header outside table card */}
+  <div className="mb-5 flex items-center justify-between">
+    <div>
+      <h1 className="text-3xl font-bold text-slate-900">
+        Order History
+      </h1>
+      <p className="mt-1 text-sm text-slate-500">
+        View and manage all customer orders
+      </p>
+    </div>
+
+    <button
+      onClick={() => setShowAddModal(true)}
+      className="flex items-center gap-2 rounded-lg bg-[#264653] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1f3b46]"
+    >
+      <Plus size={18} />
+      Add Order
+    </button>
+  </div>
+
+  {/* Only table card */}
+  <div className="w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+
+        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
           <table className="w-full border-collapse">
             <thead>
               <tr className="bg-[#d9eaf1] text-left text-sm font-semibold text-slate-700">

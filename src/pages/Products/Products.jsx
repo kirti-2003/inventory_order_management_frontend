@@ -122,8 +122,8 @@ export default function Products() {
   };
 
   return (
-  <div className="w-full min-h-screen bg-slate-100 px-10 py-8">
-    <div className="mb-8 flex items-center justify-between">
+ <div className="w-full bg-slate-100 px-10 py-2">
+    <div className="mb-5 flex items-center justify-between">
       <div>
         <h1 className="text-3xl font-bold text-slate-900">Products</h1>
         <p className="mt-1 text-sm text-slate-500">
@@ -139,7 +139,7 @@ export default function Products() {
       </button>
     </div>
 
-    <div className="w-full rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="w-full rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
       <div className="flex items-center justify-between gap-4 border-b border-slate-200 p-6">
         <div className="flex w-full max-w-2xl overflow-hidden rounded-xl border border-slate-300 bg-white">
           <input
@@ -163,20 +163,20 @@ export default function Products() {
         <table className="w-full table-fixed border-collapse">
           <thead>
             <tr className="border-b border-slate-200 bg-slate-50 text-left text-xs font-bold uppercase tracking-wide text-slate-500">
-              <th className="w-[22%] px-6 py-4">Product Name</th>
-              <th className="w-[14%] px-6 py-4">SKU</th>
-              <th className="w-[26%] px-6 py-4">Description</th>
-              <th className="w-[12%] px-6 py-4">Price</th>
-              <th className="w-[10%] px-6 py-4">Quantity</th>
-              <th className="w-[10%] px-6 py-4">Status</th>
-              <th className="w-[12%] px-6 py-4 text-center">Actions</th>
+              <th className="w-[22%] px-6 py-3">Product Name</th>
+              <th className="w-[14%] px-6 py-3">SKU</th>
+              <th className="w-[26%] px-6 py-3">Description</th>
+              <th className="w-[12%] px-6 py-3">Price</th>
+              <th className="w-[10%] px-6 py-3">Quantity</th>
+              <th className="w-[10%] px-6 py-3">Status</th>
+              <th className="w-[12%] px-6 py-3 text-center">Actions</th>
             </tr>
           </thead>
 
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan="7" className="px-6 py-12 text-center text-slate-500">
+                <td colSpan="7" className="px-6 py-6 text-center text-slate-500">
                   Loading products...
                 </td>
               </tr>
@@ -195,23 +195,23 @@ export default function Products() {
                     key={product.product_id}
                     className="border-b border-slate-100 text-sm text-slate-700 hover:bg-slate-50"
                   >
-                    <td className="px-6 py-5 font-semibold text-slate-900">
+                    <td className="px-6 py-3 font-semibold text-slate-900">
                       {product.product_name}
                     </td>
 
-                    <td className="px-6 py-5 text-slate-600">{product.sku}</td>
+                    <td className="px-6 py-3 text-slate-600">{product.sku}</td>
 
-                    <td className="truncate px-6 py-5 text-slate-500">
+                    <td className="truncate px-6 py-3 text-slate-500">
                       {product.description}
                     </td>
 
-                    <td className="px-6 py-5 font-semibold text-slate-900">
+                    <td className="px-6 py-3 font-semibold text-slate-900">
                       ₹{product.price}
                     </td>
 
-                    <td className="px-6 py-5">{product.quantity_in_stock}</td>
+                    <td className="px-6 py-3">{product.quantity_in_stock}</td>
 
-                    <td className="px-6 py-5">
+                    <td className="px-6 py-3">
                       {isOutOfStock ? (
                         <span className="rounded-full bg-red-100 px-4 py-1.5 text-xs font-semibold text-red-500">
                           Out of Stock
@@ -223,7 +223,7 @@ export default function Products() {
                       )}
                     </td>
 
-                    <td className="px-6 py-5">
+                    <td className="px-6 py-3">
                       <div className="flex items-center justify-center gap-3">
                         <button
                           onClick={() => openEditModal(product)}
@@ -248,11 +248,11 @@ export default function Products() {
         </table>
       </div>
 
-      <div className="flex items-center justify-center gap-2 px-6 py-6">
+      <div className="flex items-center justify-center gap-2 px-6 py-1">
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
-          className="rounded-lg border border-slate-200 px-4 py-2 text-sm disabled:opacity-40"
+          className="rounded-lg border border-slate-200 px-3 py-1 text-sm disabled:opacity-40"
         >
           ‹
         </button>
@@ -261,7 +261,7 @@ export default function Products() {
           <button
             key={index}
             onClick={() => setPage(index + 1)}
-            className={`rounded-lg border px-4 py-2 text-sm font-semibold ${
+            className={`rounded-lg border px-3 py-1 text-sm font-semibold ${
               page === index + 1
                 ? "border-blue-600 bg-blue-600 text-white"
                 : "border-slate-200 bg-white text-slate-600"
@@ -274,7 +274,7 @@ export default function Products() {
         <button
           disabled={page === totalPages || totalPages === 0}
           onClick={() => setPage(page + 1)}
-          className="rounded-lg border border-slate-200 px-4 py-2 text-sm disabled:opacity-40"
+          className="rounded-lg border border-slate-200 px-3 py-1 text-sm disabled:opacity-40"
         >
           ›
         </button>

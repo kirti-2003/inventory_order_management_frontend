@@ -8,6 +8,8 @@ import { getOrders } from "../../services/orderService";
 import StatCard from "../../components/dashboard/StatCard";
 import LowStockTable from "../../components/dashboard/LowStockTable";
 import RecentOrdersTable from "../../components/dashboard/RecentOrdersTable";
+import OrderStatusBreakdown from "../../components/dashboard/OrderStatusBreakdown";
+import TopSellingProducts from "../../components/dashboard/TopSellingProducts";
 
 function Dashboard() {
   const [products, setProducts] = useState([]);
@@ -48,19 +50,30 @@ function Dashboard() {
   const recentOrders = [...orders].reverse();
 
   if (loading) {
-    return <div className="p-4 text-gray-600 font-medium">Loading dashboard...</div>;
+    return (
+      <div className="flex h-[60vh] items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-[3px] border-gray-200 border-t-blue-600" />
+          <p className="text-sm font-medium text-gray-500">Loading dashboard...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="p-4 space-y-4">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600 text-sm mt-1">
+    <div className="mx-auto w-full max-w-screen-2xl">
+      {/* Header */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+          Dashboard
+        </h1>
+        <p className="mt-1 text-sm text-gray-500">
           Inventory & Order Management Overview
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+      {/* Stat cards */}
+      <div className="dashboard-stats-grid">
         <StatCard
           title="Products"
           value={products.length}
@@ -94,20 +107,16 @@ function Dashboard() {
         />
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+      {/* Tables */}
+      <div className="dashboard-panels-grid">
         <LowStockTable products={lowStockProducts} />
         <RecentOrdersTable orders={recentOrders} />
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
-        <div className="flex justify-between items-center mb-3">
-          <h3 className="font-semibold text-gray-800">Inventory Overview</h3>
-          <button className="text-xs text-red-500 font-semibold">This Month</button>
-        </div>
-
-        <div className="h-32 rounded-lg border border-dashed border-gray-300 bg-gray-50 flex items-center justify-center text-sm text-gray-400">
-          Chart will be added later
-        </div>
+      {/* Order status + top products */}
+      <div className="dashboard-panels-grid">
+        <OrderStatusBreakdown orders={orders} />
+        <TopSellingProducts orders={orders} />
       </div>
     </div>
   );
