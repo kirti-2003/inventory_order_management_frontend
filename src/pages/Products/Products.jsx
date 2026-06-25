@@ -122,8 +122,8 @@ export default function Products() {
   };
 
   return (
- <div className="w-full bg-slate-100 px-10 py-2">
-    <div className="mb-5 flex items-center justify-between">
+ <div className="w-full bg-slate-100 px-4 py-5 md:px-10 md:py-2">
+    <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div>
         <h1 className="text-3xl font-bold text-slate-900">Products</h1>
         <p className="mt-1 text-sm text-slate-500">
@@ -133,14 +133,14 @@ export default function Products() {
 
       <button
         onClick={openCreateModal}
-        className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-blue-700"
+        className="w-full rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-blue-700 md:w-auto"
       >
-        New product
+        Add new product +
       </button>
     </div>
 
     <div className="w-full rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-      <div className="flex items-center justify-between gap-4 border-b border-slate-200 p-6">
+      <div className="flex flex-col gap-4 border-b border-slate-200 p-4 md:flex-row md:items-center md:justify-between md:p-6">
         <div className="flex w-full max-w-2xl overflow-hidden rounded-xl border border-slate-300 bg-white">
           <input
             type="text"
@@ -160,16 +160,16 @@ export default function Products() {
       </div>
 
       <div className="w-full overflow-x-auto">
-        <table className="w-full table-fixed border-collapse">
+        <table className="min-w-[900px] border-collapse">
           <thead>
             <tr className="border-b border-slate-200 bg-slate-50 text-left text-xs font-bold uppercase tracking-wide text-slate-500">
-              <th className="w-[22%] px-6 py-3">Product Name</th>
-              <th className="w-[14%] px-6 py-3">SKU</th>
-              <th className="w-[26%] px-6 py-3">Description</th>
-              <th className="w-[12%] px-6 py-3">Price</th>
-              <th className="w-[10%] px-6 py-3">Quantity</th>
-              <th className="w-[10%] px-6 py-3">Status</th>
-              <th className="w-[12%] px-6 py-3 text-center">Actions</th>
+              <th className="w-[22%] px-4 py-4">Product Name</th>
+              <th className="w-[14%] px-4 py-4">SKU</th>
+              <th className="w-[26%] px-4 py-4">Description</th>
+              <th className="w-[12%] px-4 py-4">Price</th>
+              <th className="w-[10%] px-4 py-4">Quantity</th>
+              <th className="w-[10%] px-4 py-4">Status</th>
+              <th className="w-[12%] px-4 py-4 text-center">Actions</th>
             </tr>
           </thead>
 
@@ -248,7 +248,7 @@ export default function Products() {
         </table>
       </div>
 
-      <div className="flex items-center justify-center gap-2 px-6 py-1">
+      <div className="flex items-center justify-center gap-2 px-4 py-4">
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}

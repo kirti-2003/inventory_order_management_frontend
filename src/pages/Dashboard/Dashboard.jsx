@@ -8,7 +8,7 @@ import { getOrders } from "../../services/orderService";
 import StatCard from "../../components/dashboard/StatCard";
 import LowStockTable from "../../components/dashboard/LowStockTable";
 import RecentOrdersTable from "../../components/dashboard/RecentOrdersTable";
-import OrderStatusBreakdown from "../../components/dashboard/OrderStatusBreakdown";
+import OrderStatusBreakdown from "../../components/dashboard/Orderstatusbreakdown";
 import TopSellingProducts from "../../components/dashboard/TopSellingProducts";
 
 function Dashboard() {
@@ -61,7 +61,7 @@ function Dashboard() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-screen-2xl">
+    <div className="w-full">
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">

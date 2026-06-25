@@ -127,9 +127,9 @@ export default function Customers() {
   }, [customers, search]);
 
   return (
-  <div className="w-full min-h-screen bg-slate-100 px-10 py-4">
+  <div className="w-full min-h-screen bg-slate-100 px-4 py-5 md:px-10 md:py-4">
       {/* Header */}
-     <div className="flex items-center justify-between gap-6 mb-5">
+     <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div>
         <h1 className="text-3xl font-bold text-slate-900">
           Customer Management
@@ -141,16 +141,16 @@ export default function Customers() {
 
       <button
         onClick={() => setShowModal(true)}
-        className="shrink-0 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-semibold"
+        className="w-full shrink-0 rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white hover:bg-emerald-700 md:w-auto"
       >
         + Add Customer
       </button>
     </div>
 
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-6">
 
       {/* Search & Stats */}
-      <div className="flex items-center justify-between gap-6 mb-6">
+      <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="text-sm text-slate-500">
           Total Customers:{" "}
           <span className="font-bold text-slate-800">{customers.length}</span>
@@ -161,13 +161,13 @@ export default function Customers() {
           placeholder="Search customers..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-96 border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500"
+          className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-emerald-500 md:w-96"
         />
       </div>
 
       {/* Table */}
-      <div className="w-full overflow-x-auto border border-slate-200 rounded-xl bg-white">
-        <table className="w-full min-w-full border-collapse">
+      <div className="w-full overflow-x-auto rounded-xl border border-slate-200 bg-white">
+        <table className="w-full min-w-[850px] border-collapse lg:min-w-0">
           <thead className="bg-slate-50">
             <tr>
               <th className="text-left px-6 py-4 text-sm font-semibold text-slate-600">

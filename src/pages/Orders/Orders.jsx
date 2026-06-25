@@ -112,10 +112,10 @@ export default function Orders() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 px-10 py-4">
+    <div className="min-h-screen bg-slate-100 px-4 py-5 md:px-10 md:py-4">
 
   {/* Header outside table card */}
-  <div className="mb-5 flex items-center justify-between">
+  <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
     <div>
       <h1 className="text-3xl font-bold text-slate-900">
         Order History
@@ -127,18 +127,17 @@ export default function Orders() {
 
     <button
       onClick={() => setShowAddModal(true)}
-      className="flex items-center gap-2 rounded-lg bg-[#264653] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1f3b46]"
-    >
+       className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#264653] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1f3b46] md:w-auto"    >
       <Plus size={18} />
       Add Order
     </button>
   </div>
 
   {/* Only table card */}
-  <div className="w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+ <div className="w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-6">
 
-        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-          <table className="w-full border-collapse">
+        <div className="w-full overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <table className="w-full min-w-[850px] border-collapse lg:min-w-0">
             <thead>
               <tr className="bg-[#d9eaf1] text-left text-sm font-semibold text-slate-700">
                 <th className="px-6 py-4">S No</th>
